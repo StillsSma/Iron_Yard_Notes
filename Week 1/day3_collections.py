@@ -1,3 +1,7 @@
+
+my_string = "Peanut is awesome"
+my_string = my_string.split(" ")
+print(my_string)
 my_list = ["sam", 22, ["the dark", "wasps"]]
 
 print(my_list)
