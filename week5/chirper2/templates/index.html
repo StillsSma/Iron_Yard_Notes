@@ -2,12 +2,16 @@
 
 {% block content%}
 <h1>Welcome to the Thing (inheritance)</h1>
+<h3>{{ request.user }}</h3>
 
 <form class="" method="post">
   {% csrf_token %}
-  <textarea name="chirp_body" class="form-control" rows="3"></textarea>
+{{form}}
   <input class="btn btn-default" type="submit" value="Submit">
 </form>
+
+
+
 <ul>
   {% for chirp in all_chirps %}
     <li>{{ chirp.body }}</li>
