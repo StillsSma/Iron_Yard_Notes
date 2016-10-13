@@ -2,6 +2,9 @@ from django.shortcuts import render
 from app.models import Chirp
 from app.forms import ChirpForm
 from django.views import View
+from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView
+
 # Create your views here.
 
 def index_view(request):
@@ -24,10 +27,19 @@ def about_view(request):
 
 
 
-class ChirpView(View):
+class ChirpView(ListView):
+    template_name = "chirps.html"
+    model = Chirp
 
-    def get(self, request):
-        return render(request, "chirps.html")
+class ChirpDetailView(DetailView):
+    model = Chirp
 
-    def post(self,request):
-        return render(request, "chirps.html")
+class ChirpCreateView(CreateView):
+    model = Chirp
+    success_url = "/chirps"
+    fields = ('body', )
+
+class ChirpUpdateView(UpdateView):
+    model = Chirp
+    success_url = "/chirps"
+    fields = ('body', )

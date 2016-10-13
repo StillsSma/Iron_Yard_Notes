@@ -15,11 +15,12 @@
     <div class="contatiner">
       <a href="{% url 'index_view' %}">Home</a>
       <a href="{% url 'about_view' %}">About me</a>
+      <a href="{% url 'chirp_Create_view' %}">Create Chirp</a>
 
       {% if not request.user.is_authenticated %}
-      <a href="% url 'login' %"> login </a>
+      <a href="{% url 'login' %}"> login </a>
       {% else %}
-      <a href="% url 'logout' %"> logout </a>
+      <a href="{% url 'logout' %}"> logout </a>
       {% endif %}
 
       {% block content %}
