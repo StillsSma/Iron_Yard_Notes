@@ -1,24 +1,13 @@
 from django.shortcuts import render
-from app.models import Chirp
+from app.models import Chirp, Vote
 from app.forms import ChirpForm
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
-
-def index_view(request):
-    print(request.POST)
-    if request.POST:
-        instance = ChirpForm(request.POST)
-        if instance.is_valid():
-            instance.save()
-    context = {
-        "form": ChirpForm(),
-        "all_chirps": Chirp.objects.all().order_by("-created")
-    }
-    return render(request, "index.html", context)
-
 
 def about_view(request):
     print("sup" + "="*20)
@@ -39,7 +28,31 @@ class ChirpCreateView(CreateView):
     success_url = "/chirps"
     fields = ('body', )
 
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        return super().form_valid(form)
+
 class ChirpUpdateView(UpdateView):
     model = Chirp
     success_url = "/chirps"
     fields = ('body', )
+
+class UserCreateView(CreateView):
+    model = User
+    success_url = "/chirps" #show reverse_lazy
+    form_class = UserCreationForm
+
+class ChirpVoteView(CreateView):
+    model = Vote
+    fields = ('user','chirp','value')
+    success_url = "/chirps"
+    def form_valid(self, form):
+        try:
+            vote.objects.get(user=self.request.user, chirp_id=self.kwargs["pk"]).delete()
+        except Vote.DoesNotExist:
+            pass
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        instance.chirp = Chirp.objects.get(pk=self.kwargs["pk"])
+        return super().form_valid(form)
