@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<form class="" action="" method="post">
+  <p>
+    You are about to delete Special: {{object}}. Are you sure?
+  </p>
+  {% csrf_token %}
+  <input type="submit" name="" value="yes">
+</form>
+{% endblock %}
