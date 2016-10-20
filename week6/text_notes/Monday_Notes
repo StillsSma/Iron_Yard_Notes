@@ -1,0 +1,49 @@
+Lazy and Reverse Lazy:
+
+url-name contains value "index_view", passes as argument to reverse()
+reverse() will go to url pattern and check for name "index_view"
+reverse() will return string "/", takes name and turns it into url pattern
+  - "user_create" returns "/create_user/"
+  - does the same thing that url template tag does {% url %}
+
+Lazy Evaluation
+  Lazy-X = map (somelambda, [1,2,3])
+  <main.lazy_x map 0x0436353>
+  - code not doing all the work when you tell it to
+  - this means it takes less time to evaluated code
+  -it also means rather than doing the work now and breaking,
+   the work is stored away to be evaluated later
+  Rule of Thumb: reverse() can be used inside get_success_url,
+  reverse_lazy() used outside
+    * when in doubt, you can always use reverse_lazy()
+
+Chirper2 work
+
+- delete index view, import ,url, html
+  to make chirp_view home, replace url code with ^$
+
+- @ sign in Django is a 'Decorator'
+  - it enables functions to do more
+  - def fun_x(fun_y):
+    *does something*
+    calls fun_y()
+    @fun_x
+  - def LOL():
+    return "lol"
+  - makes self.score, not self.score()
+    - can not take any properties except for self
+
+        .vote_set: this is important
+        .values_list can make queries super fast
+        Consule:
+            >>> chirp.vote_set.all().values_list("value")
+            <QuerySet []>
+            >>> chirp.vote_set.all().values_list("value",flat=True)
+            <QuerySet []>
+            >>> [chirp_obj.score  for chirp_obj in chirp.vote_set.all()]
+            []
+            >>> sum([chirp_obj.score  for chirp_obj in chirp.vote_set.all()])
+-In form, leaving action blank will post info to the
+ same url that we are at
+
+ -self.request.user is also important

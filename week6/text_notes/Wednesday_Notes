@@ -1,0 +1,12 @@
+User profile
+
+ User
+  -username
+  -password
+  -is_staff
+  -email
+
+Profile
+  -onetone relationship with user
+  -favorite
+  -level

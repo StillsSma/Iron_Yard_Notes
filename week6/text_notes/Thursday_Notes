@@ -1,0 +1,19 @@
+Git workflow with two people:
+
+- One person creates repository
+- add friend as collaborator
+  - person 1 does normal workflow
+  - person 2 git clone repo, gets copy of repository
+  - person 2 git pushes to repository
+  - person 1 git pulls
+
+all a merge conflict is is more than one person editing the same part of a file
+
+NEVER PULL IF YOU HAVE UNCOMMITTED WORK
+
+Try and only push working changge
+
+
++++++++++++
+
+change profileview from templateview to updateview

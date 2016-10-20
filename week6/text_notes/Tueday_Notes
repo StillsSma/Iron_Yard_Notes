@@ -1,0 +1,3 @@
+Super() and Class inheritance
+  Super() id looking at super class
+  Super() calls method from parent class that would otherwise be overwritten 
