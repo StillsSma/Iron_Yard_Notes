@@ -45,11 +45,11 @@ class UserCreateView(CreateView):
 
 class ChirpVoteView(CreateView):
     model = Vote
-    fields = ('user','chirp','value')
+    fields = ('value',)
     success_url = "/chirps"
     def form_valid(self, form):
         try:
-            vote.objects.get(user=self.request.user, chirp_id=self.kwargs["pk"]).delete()
+            Vote.objects.get(user=self.request.user, chirp_id=self.kwargs["pk"]).delete()
         except Vote.DoesNotExist:
             pass
         instance = form.save(commit=False)
