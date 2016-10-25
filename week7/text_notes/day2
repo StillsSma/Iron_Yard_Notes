@@ -1,0 +1,9 @@
+Restful API
+
+-Urls
+-Verbs
+  - get
+  - post
+  - put
+  - patch
+  - delete
