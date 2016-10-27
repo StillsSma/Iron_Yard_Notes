@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from menu_api.views import SpecialListCreateAPIView, SpecialDetailUpdateDestroyAPIView, IngredientListAPIView, IngredientDetailAPIView
-
+from rest_framework.authtoken import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^obtain-token/$', views.obtain_auth_token),
     url(r'^ingredients/$', IngredientListAPIView.as_view(), name="ingredient_list_api_view" ),
     url(r'^ingredients/(?P<pk>\d+)/$', IngredientDetailAPIView.as_view(), name="ingredient_detail_api_view"),
     url(r'^specials/$', SpecialListCreateAPIView.as_view(), name="special_list_api_view" ),
