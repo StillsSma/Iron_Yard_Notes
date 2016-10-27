@@ -1,13 +1,21 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 # Create your views here.
-from menu_api.models import Special
-from menu_api.serializers import SpecialSerializer
+from menu_api.models import Special, Ingredient
+from menu_api.serializers import SpecialSerializer, IngredientSerializer
 
-class SpecialListAPIView(ListCreateAPIView):
+class SpecialListCreateAPIView(ListCreateAPIView):
     queryset = Special.objects.all()
     serializer_class = SpecialSerializer
 
-class SpecialDetailAPIView(RetrieveUpdateDestroyAPIView):
+class SpecialDetailUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Special.objects.all()
     serializer_class = SpecialSerializer
+
+class IngredientListAPIView(ListCreateAPIView):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+
+class IngredientDetailAPIView(RetrieveAPIView):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
