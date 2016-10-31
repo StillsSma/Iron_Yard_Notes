@@ -1,0 +1,10 @@
+Templates ---> Dynamic
+Static Files ----> Unchanging dumb file storage
+Media -----> Files that user's upload,  User created, Can be associated with Models
+
+.gitignore :
+  .direnv/
+  __pychache__/
+  .envrc
+  media/
+  db.dqlite3
