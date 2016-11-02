@@ -8,3 +8,9 @@ Media -----> Files that user's upload,  User created, Can be associated with Mod
   .envrc
   media/
   db.dqlite3
+
+
+Web Scraping:
+
+  .py file that accesses the internet, looks for web elements,
+  request.get is sort of lick clicking a link on a page 
