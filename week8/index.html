@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>javascript place</h1>
+    <p id="meat_text">
+      Bacon ipsum dolor amet pork loin flank rump jowl venison shoulder chuck sirloin kevin capicola pig pork chop fatback. Sausage pork cupim, bacon hamburger burgdoggen pig landjaeger. Biltong rump chicken capicola filet mignon flank picanha frankfurter salami pork tri-tip boudin fatback strip steak. Meatloaf rump boudin picanha.
+    </p>
+
+    <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    /*
+      console.log("hello world");
+      $("#meat_text").on("click", function(e) {
+        $("#meat_text").text("Coffe has gone cold.");
+
+
+      });
+      */
+      var wordArray = ["this", "is", "wierd", "amirite?"];
+      for (var i = 0, i < wordArray.length ; i++ ) {
+          var newElement = $("<span id=" + i ">").text(wordArray[i] + " ");
+          $("#clickBye").append(newElement);
+
+      };
+    </script>
+
+
+  </body>
+</html>
